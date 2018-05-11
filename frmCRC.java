@@ -53,4 +53,56 @@ public class frmCRC extends JFrame {
 		lblInput.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblInput.setBounds(27, 26, 163, 14);
 		contentPane.add(lblInput);
+		
+		JLabel lblGjeneratori = new JLabel("Gjeneratori:");
+		lblGjeneratori.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblGjeneratori.setBounds(70, 57, 130, 14);
+		contentPane.add(lblGjeneratori);
+		
+		JLabel lblTekstiIPranuar = new JLabel("Teksti i pranuar:");
+		lblTekstiIPranuar.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblTekstiIPranuar.setBounds(60, 174, 135, 14);
+		contentPane.add(lblTekstiIPranuar);
+		
+		txtText = new JTextField();
+		txtText.setBounds(200, 24, 198, 20);
+		contentPane.add(txtText);
+		txtText.setColumns(10);
+		
+		textGjeneratori = new JTextField();
+		textGjeneratori.setBounds(200, 55, 198, 20);
+		contentPane.add(textGjeneratori);
+		textGjeneratori.setColumns(10);
+		
+		txtTekstiIpranuar = new JTextField();
+		txtTekstiIpranuar.setBounds(200, 171, 198, 20);
+		contentPane.add(txtTekstiIpranuar);
+		txtTekstiIpranuar.setColumns(10);
+		
+		
+		
+		JButton btnTransmit = new JButton("Transmit");
+		btnTransmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			String teDhenat=txtText.getText();
+			String Gjeneratori=textGjeneratori.getText();
+			String TeDhenatTotale=teDhenat;
+			int i=1;
+			while(TeDhenatTotale.length()<(teDhenat.substring(0, i).length()+Gjeneratori.substring(0, i).length()-1)) {
+				TeDhenatTotale=TeDhenatTotale+"0";
+				i++;
+			}
+			try {
+			TeDhenatTotale=teDhenat+div(TeDhenatTotale,Gjeneratori);
+			//lblFjaliaDerguar.setText(TeDhenatTotale);
+			String fjaliaEPranuar=txtTekstiIpranuar.getText();
+			
+			if(Integer.parseInt(div(fjaliaEPranuar,Gjeneratori)) == 0)
+			    lblInfo.setText("Nuk ka gabime!");}
+			catch(Exception e1){
+				lblInfo.setText("Ka gabime!");
+				
+				}
+			}
+
 
