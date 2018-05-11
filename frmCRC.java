@@ -104,5 +104,59 @@ public class frmCRC extends JFrame {
 				
 				}
 			}
+			
+			
+			String div(String num1,String num2)
+			 {
+			  int pointer = num2.length();
+			  String rezultati = num1.substring(0, pointer);
+			  String mbetja = "";
+			  for(int i = 0; i < num2.length(); i++)
+			  {
+			   if(rezultati.charAt(i) == num2.charAt(i))
+			    mbetja += "0";
+			   else
+			    mbetja += "1";
+			  }
+			  while(pointer < num1.length())
+			  {
+			   if(mbetja.charAt(0) == '0')
+			   {
+			    mbetja = mbetja.substring(1, mbetja.length());
+			    mbetja = mbetja + String.valueOf(num1.charAt(pointer));
+			    pointer++;
+			   }
+			   rezultati = mbetja;
+			   mbetja = "";
+			   for(int i = 0; i < num2.length(); i++)
+			   {
+			    if(rezultati.charAt(i) == num2.charAt(i))
+			     mbetja += "0";
+			    else
+			     mbetja += "1";
+			   }
+			  }
+			  return mbetja.substring(1,mbetja.length());
+			 }	
+				
+				
+			});
+		
+		
+		
+		
+		btnTransmit.setBounds(262, 122, 89, 23);
+		contentPane.add(btnTransmit);
+		
+		
+		lblFjaliaDerguar.setBounds(220, 86, 188, 25);
+		contentPane.add(lblFjaliaDerguar);
+		
+		
+		lblInfo.setBounds(262, 222, 146, 14);
+		contentPane.add(lblInfo);
+	}
+
+}
 
 
